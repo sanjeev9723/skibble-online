@@ -1,7 +1,9 @@
 import React from "react";
-import { useState, useRef } from "react";
+import {  useRef,useContext } from "react";
+import { AppContext } from "../Pages/Home";
 
-const AddCourse = ({ onSave }) => {
+const AddCourse = () => {
+  const {handleSaveCourse  } = useContext(AppContext);
   const title = useRef();
   const duration = useRef();
   const author = useRef();
@@ -16,60 +18,61 @@ const AddCourse = ({ onSave }) => {
       author: author.current.value,
       price: price.current.value,
     };
-    onSave(newCourse);
-      title: title.current.value = " "
-      duration: duration.current.value = " "
-      author: author.current.value  = " "
-      price: price.current.value  = " "
+    handleSaveCourse(newCourse);
+      title.current.value = " ";
+       duration.current.value = " ";
+       author.current.value  = " ";
+       price.current.value  = " ";
     
   }
   return (
     <div className="container">
       <h5>Add Course</h5>
       <form onSubmit={handleSave}>
-        <div class="row p-4">
-          <div class="col">
+        <div className="row p-4">
+          <div className="col">
             <input
               ref={title}
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Course Title"
               aria-label="Course Title "
               required
             />
           </div>
-          <div class="col">
+          <div className="col">
             <input
               ref={duration}
               type="number"
-              class="form-control"
+              className="form-control"
               placeholder="Course Duration"
               aria-label="Course Duration"
               required
             />
           </div>
-          <div class="col">
+          <div className="col">
             <input
               ref={author}
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Course Author"
               aria-label="Course Author"
               required
             />
           </div>
-          <div class="col">
+          <div className="col">
             <input
               ref={price}
               type="number"
-              class="form-control"
+              className="form-control"
               placeholder="Course Price"
               aria-label="Course Price"
               required
             />
           </div>
-          <div class="col">
-            <button class="btn btn-primary">Save course</button>
+          <div className="col">
+            <button 
+            className="btn btn-primary">Save course</button>
           </div>
         </div>
       </form>

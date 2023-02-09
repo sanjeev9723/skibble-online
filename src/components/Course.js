@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../Pages/Home";
 
-
-const Course =({course}) => {
+const Course =({ course,courseIndex}) => {
+  const { courses } = useContext(AppContext);
     return(
         <div className="container">
         <div className="card" >
