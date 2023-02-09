@@ -1,7 +1,6 @@
-import React from "react";
 import {  useRef,useContext } from "react";
 import { AppContext } from "../Pages/Home";
-
+import "./components.css";
 const AddCourse = () => {
   const {handleSaveCourse  } = useContext(AppContext);
   const title = useRef();
@@ -26,11 +25,12 @@ const AddCourse = () => {
     
   }
   return (
-    <div className="container">
+    <div className="sticky-container">
+      <div className="container">
       <h5>Add Course</h5>
       <form onSubmit={handleSave}>
         <div className="row p-4">
-          <div className="col">
+          <div className="col col-lg-6 col-md-6">
             <input
               ref={title}
               type="text"
@@ -40,7 +40,7 @@ const AddCourse = () => {
               required
             />
           </div>
-          <div className="col">
+          <div className="col col-lg-6 col-md-6">
             <input
               ref={duration}
               type="number"
@@ -50,7 +50,7 @@ const AddCourse = () => {
               required
             />
           </div>
-          <div className="col">
+          <div className="col col-lg-6 col-md-6">
             <input
               ref={author}
               type="text"
@@ -60,7 +60,7 @@ const AddCourse = () => {
               required
             />
           </div>
-          <div className="col">
+          <div className="col col-lg-6 col-md-6">
             <input
               ref={price}
               type="number"
@@ -70,12 +70,13 @@ const AddCourse = () => {
               required
             />
           </div>
-          <div className="col">
+          <div className="col col-lg-6 col-md-6">
             <button 
             className="btn btn-primary">Save course</button>
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 };
