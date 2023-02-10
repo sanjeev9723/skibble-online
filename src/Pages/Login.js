@@ -6,7 +6,7 @@ const Login = ({ setUser }) => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !email) return;
     setUser({ name: name, email: email });
@@ -18,10 +18,10 @@ const Login = ({ setUser }) => {
     <section className="container">
       <form className="form" onSubmit={handleSubmit}>
         <h5>Login</h5>
-        <div class="form-floating mb-3">
+        <div className="form-floating mb-3">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="floatingInput"
             value={name}
             onChange={(e)=> setName(e.target.value)}
@@ -29,10 +29,10 @@ const Login = ({ setUser }) => {
           />
           <label for="floatingName">Name</label>
         </div>
-        <div class="form-floating ">
+        <div className="form-floating ">
           <input
             type="email"
-            class="form-control"
+            className="form-control"
             id="floatingInput"
             value={email}
             onChange={(e) => setEmail(e.target.value) }
@@ -41,7 +41,7 @@ const Login = ({ setUser }) => {
           <label for="floatingInput">Email address</label>
         </div>
 
-        <button type="submit" class="btn btn-primary ">
+        <button type="submit" className="btn btn-primary ">
           login
         </button>
       </form>
