@@ -1,8 +1,8 @@
-import {  useRef,useContext } from "react";
+import { useRef, useContext } from "react";
 import { AppContext } from "../Pages/Home";
 import "./components.css";
 const AddCourse = () => {
-  const {handleSaveCourse  } = useContext(AppContext);
+  const { handleSaveCourse } = useContext(AppContext);
   const title = useRef();
   const duration = useRef();
   const author = useRef();
@@ -18,64 +18,62 @@ const AddCourse = () => {
       price: price.current.value,
     };
     handleSaveCourse(newCourse);
-      title.current.value = " ";
-       duration.current.value = " ";
-       author.current.value  = " ";
-       price.current.value  = " ";
-    
+    title.current.value = " ";
+    duration.current.value = " ";
+    author.current.value = " ";
+    price.current.value = " ";
   }
   return (
     <div className="sticky-container">
       <div className="container">
-      <h5>Add Course</h5>
-      <form onSubmit={handleSave}>
-        <div className="row p-4">
-          <div className="col col-lg-6 col-md-6">
-            <input
-              ref={title}
-              type="text"
-              className="form-control"
-              placeholder="Course Title"
-              aria-label="Course Title "
-              required
-            />
+        <h5>Add Course</h5>
+        <form onSubmit={handleSave}>
+          <div className="row p-4">
+            <div className="col col-lg-6 col-md-6">
+              <input
+                ref={title}
+                type="text"
+                className="form-control"
+                placeholder="Course Title"
+                aria-label="Course Title "
+                required
+              />
+            </div>
+            <div className="col col-lg-6 col-md-6">
+              <input
+                ref={duration}
+                type="number"
+                className="form-control"
+                placeholder="Course Duration"
+                aria-label="Course Duration"
+                required
+              />
+            </div>
+            <div className="col col-lg-6 col-md-6">
+              <input
+                ref={author}
+                type="text"
+                className="form-control"
+                placeholder="Course Author"
+                aria-label="Course Author"
+                required
+              />
+            </div>
+            <div className="col col-lg-6 col-md-6">
+              <input
+                ref={price}
+                type="number"
+                className="form-control"
+                placeholder="Course Price"
+                aria-label="Course Price"
+                required
+              />
+            </div>
+            <div className="col col-lg-6 col-md-6">
+              <button className="btn btn-primary">Save course</button>
+            </div>
           </div>
-          <div className="col col-lg-6 col-md-6">
-            <input
-              ref={duration}
-              type="number"
-              className="form-control"
-              placeholder="Course Duration"
-              aria-label="Course Duration"
-              required
-            />
-          </div>
-          <div className="col col-lg-6 col-md-6">
-            <input
-              ref={author}
-              type="text"
-              className="form-control"
-              placeholder="Course Author"
-              aria-label="Course Author"
-              required
-            />
-          </div>
-          <div className="col col-lg-6 col-md-6">
-            <input
-              ref={price}
-              type="number"
-              className="form-control"
-              placeholder="Course Price"
-              aria-label="Course Price"
-              required
-            />
-          </div>
-          <div className="col col-lg-6 col-md-6">
-            <button 
-            className="btn btn-primary">Save course</button>
-          </div>
-        </div>
-      </form>
+        </form>
       </div>
     </div>
   );

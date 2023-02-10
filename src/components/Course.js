@@ -36,10 +36,12 @@ const Course = ({ course, courseIndex }) => {
           >
             Edit
           </a>
-          <a className="btn" 
-          onClick={ () =>{
-            deleteCourse(course.id)
-        }}>
+          <a
+            className="btn"
+            onClick={() => {
+              deleteCourse(course.id);
+            }}
+          >
             Delete{" "}
           </a>
         </div>
