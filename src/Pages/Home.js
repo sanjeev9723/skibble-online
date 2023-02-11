@@ -1,16 +1,13 @@
-import { Link } from "react-router-dom";
-import Header from "../components/Header";
 import AddCourse from "../components/AddCourse";
 import CourseList from "../components/CourseList";
 import { useState, createContext } from "react";
-import Navbar from "../components/Navbar";
-import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+import EditCourse from "../components/EditCourse";
 
 export const AppContext = createContext(null);
 
 const Home = () => {
   const [toggleAddCourse, setToggleAddCourse] = useState(false);
-
+  const [editActive, setEditActive] = useState(null);
   const [courses, setCourses] = useState([
     {
       id: "random1",
@@ -25,22 +22,33 @@ const Home = () => {
       price: 500,
     },
   ]);
-  function editCourse(id) {
-    console.log(id);
-    // setCourses((course) =>{
-    //   return courses.filter((course) => course.id!==id)
-    // })
+  function editCourse(course) {
+    console.log(course);
+    setEditActive(course);
+  }
+  function handleEditCourse(updatedCourse) {
+    const copyCourses = [...courses];
+    copyCourses.filter((course, index) => {
+      if (course.id === updatedCourse.id) {
+        copyCourses.splice(index, 1, updatedCourse);
+      }
+    });
+
+    setCourses([...copyCourses]);
   }
   function deleteCourse(id) {
     // console.log("delete clicked");
-    setCourses((course) =>{
-      return courses.filter((course) => course.id!==id)
-    })
+    setCourses((course) => {
+      return courses.filter((course) => course.id !== id);
+    });
   }
   function toggleAddCourseComponent() {
     setToggleAddCourse(!toggleAddCourse);
   }
   function handleSaveCourse(newCourse) {
+    if (editActive != null) {
+      return;
+    }
     setCourses([...courses, newCourse]);
   }
   return (
@@ -54,11 +62,15 @@ const Home = () => {
             editCourse,
             deleteCourse,
             toggleAddCourseComponent,
+            editActive,
+            setEditActive,
+            handleEditCourse,
           }}
         >
           {/* <Header /> */}
           <CourseList />
           {toggleAddCourse ? <AddCourse /> : null}
+          <EditCourse />
         </AppContext.Provider>
       </div>
     </section>

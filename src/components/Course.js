@@ -18,7 +18,7 @@ const Course = ({ course, courseIndex }) => {
           <div className="card">
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
-                Duration <b> {course.duration}4hrs</b>{" "}
+                Duration <b> {course.duration}hrs</b>{" "}
               </li>
               <li className="list-group-item">
                 Author <b>{course.author}</b>
@@ -30,16 +30,18 @@ const Course = ({ course, courseIndex }) => {
           <a
             className="btn"
             onClick={() => {
-              editCourse(course.id);
+              editCourse(course);
               toggleAddCourseComponent();
             }}
           >
             Edit
           </a>
-          <a className="btn" 
-          onClick={ () =>{
-            deleteCourse(course.id)
-        }}>
+          <a
+            className="btn"
+            onClick={() => {
+              deleteCourse(course.id);
+            }}
+          >
             Delete{" "}
           </a>
         </div>

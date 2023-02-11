@@ -14,7 +14,6 @@ const Login = ({ setUser }) => {
   };
 
   return (
-
     <section className="container">
       <form className="form" onSubmit={handleSubmit}>
         <h5>Login</h5>
@@ -24,7 +23,7 @@ const Login = ({ setUser }) => {
             className="form-control"
             id="floatingInput"
             value={name}
-            onChange={(e)=> setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             placeholder="name"
           />
           <label for="floatingName">Name</label>
@@ -35,7 +34,7 @@ const Login = ({ setUser }) => {
             className="form-control"
             id="floatingInput"
             value={email}
-            onChange={(e) => setEmail(e.target.value) }
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="name@example.com"
           />
           <label for="floatingInput">Email address</label>
@@ -46,7 +45,6 @@ const Login = ({ setUser }) => {
         </button>
       </form>
     </section>
-
   );
 };
 export default Login;

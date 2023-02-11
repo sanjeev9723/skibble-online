@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-link:focus, .nav-link:hover {
+  color: #000000 ;
+  background-color: red ;
+}
+
+.rounded-black{
+  background-color: #282c34;
+  border-radius: 6px;
+  box-shadow: 2px 1px 8px #868686;
+  color: white !important;
+}

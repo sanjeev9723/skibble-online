@@ -1,3 +1,4 @@
+import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
@@ -6,11 +7,10 @@ import Error from "./Pages/Error";
 // import Navbar from "./components/Navbar";
 // import Header from "./components/Header";
 import Login from "./Pages/Login";
-
-import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import SharedLayout from "./Pages/SharedLayout";
 import Dashboard from "./Pages/Dashboard";
 import { useState } from "react";
+import EditCourse from "./components/EditCourse";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,6 +23,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="login" element={<Login setUser={setUser}></Login>} />
+          <Route path="edit" element={<EditCourse></EditCourse>} />
+
           <Route
             path="dashboard"
             element={<Dashboard user={user}></Dashboard>}

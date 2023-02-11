@@ -1,33 +1,38 @@
 import { useRef, useContext, useEffect } from "react";
 import { AppContext } from "../Pages/Home";
 import "./components.css";
-const AddCourse = () => {
-  const { handleSaveCourse } = useContext(AppContext);
+const EditCourse = () => {
+  const { editActive,handleEditCourse } = useContext(AppContext);
   const title = useRef();
   const duration = useRef();
   const author = useRef();
   const price = useRef();
 
-  function handleSave(e) {
+  useEffect(() => {
+    if(editActive==null) return
+
+    title.current.value = editActive.title;
+    duration.current.value = editActive.duration;
+    author.current.value = editActive.author;
+    price.current.value = editActive.price;
+  }, [editActive]);
+
+  function handleEdit(e) {
     e.preventDefault();
     const newCourse = {
-      id: "SKIB" + Math.round(Math.random() * 999),
+      id:editActive.id,
       title: title.current.value,
       duration: duration.current.value,
       author: author.current.value,
       price: price.current.value,
     };
-    handleSaveCourse(newCourse);
-    title.current.value = " ";
-    duration.current.value = " ";
-    author.current.value = " ";
-    price.current.value = " ";
+    handleEditCourse(newCourse);
   }
   return (
     <div className="sticky-container">
       <div className="container">
-        <h5>Add Course</h5>
-        <form onSubmit={handleSave}>
+        <h5>Edit Course</h5>
+        <form onSubmit={handleEdit}>
           <div className="row p-4">
             <div className="col col-lg-6 col-md-6">
               <input
@@ -70,7 +75,7 @@ const AddCourse = () => {
               />
             </div>
             <div className="col col-lg-6 col-md-6">
-              <button className="btn btn-primary">Save course</button>
+              <button className="btn btn-primary">Edit course</button>
             </div>
           </div>
         </form>
@@ -79,4 +84,4 @@ const AddCourse = () => {
   );
 };
 
-export default AddCourse;
+export default EditCourse;
